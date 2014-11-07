@@ -1,19 +1,19 @@
 TestApp.Routers.Tests = Backbone.Router.extend({
-    routes:{
+    routes: {
         "": "index",
+        "new": "editUser",
+        "edit/:id": "editUser"
     },
 
-    initialize: function(){
-      this.list = new TestApp.Collections.Tests();
-      this.list.fetch({
-          success: function(list){
-              console.log(list.length);
-          }
-      });
+    initialize: function () {
+
     },
 
-    index: function(){
-        var view = new TestApp.Views.TestsIndex();
-        view.render();
+    index: function () {
+        TestApp.Views.indexView.render();
+    },
+
+    editUser: function (id) {
+        TestApp.Views.editView.render({id: id});
     }
 });

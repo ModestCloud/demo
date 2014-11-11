@@ -9,14 +9,20 @@ class UsersController < ApplicationController
 
   def create
     @user = Users.new(params[:user])
-    @user.save!
-    render json: @user, status: :created
+    if @user.save!
+      render json: @user, status: :created
+    else
+      render json: :failure
+    end
   end
 
   def destroy
     @user = Users.find(params[:id])
-    @user.destroy
-    render json: @user
+    if @user.destroy
+      render json: @user
+    else
+      render json: :failure
+    end
   end
 
   def update
@@ -24,7 +30,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       render json: @user
     else
-      render json: @user
+      render json: :failure
     end
 
   end

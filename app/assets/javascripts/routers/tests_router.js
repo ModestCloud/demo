@@ -10,7 +10,7 @@ TestApp.Routers.Tests = Backbone.Router.extend({
     },
 
     index: function () {
-        TestApp.Views.indexView.render();
+        TestApp.Views.indexView.render({});
     },
 
     editUser: function (id) {
